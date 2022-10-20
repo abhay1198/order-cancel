@@ -13,10 +13,6 @@
  * @link      https://github.com/abhay1198/order-cancel
  */
 -->
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
-    <router id="standard">
-        <route id="ordercancel" frontName="ordercancel">
-            <module name="Abhay_OrderCancel" />
-        </route>
-    </router>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="order_cancel_general_cancel_email" label="Order Cancel Email Template" file="orderCancel.html" type="html" module="Abhay_OrderCancel" area="frontend"/>
 </config>

@@ -9,7 +9,7 @@
  * @author    Abhay Agrawal <abhay@gmail.com>
  * @copyright 2022 Copyright © Abhay
  * @license   See COPYING.txt for license details.
- * @link      https://github.com/abhay1198/
+ * @link      https://github.com/abhay1198/order-cancel
  */
 
 use Magento\Framework\Component\ComponentRegistrar;
