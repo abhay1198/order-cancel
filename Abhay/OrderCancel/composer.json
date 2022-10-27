@@ -2,7 +2,7 @@
     "name": "abhay/module-ordercancel",
     "description": "Order Cancel Module",
     "type": "magento2-module",
-    "version": "1.0.0",
+    "version": "v1.0.0",
     "require": {
         "php": "~7.4.0||~8.1.0"
     },
