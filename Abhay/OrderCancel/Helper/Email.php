@@ -71,16 +71,25 @@ class Email extends \Magento\Framework\App\Helper\AbstractHelper
     /**
      * Send CustomerCancelMail
      *
-     * @param Mixed $emailTemplateVariables
-     * @param Mixed $senderInfo
-     * @param Mixed $receiverInfo
+     * @param Mixed  $emailTemplateVariables
+     * @param Mixed  $senderInfo
+     * @param Mixed  $receiverInfo
+     * @param string $storeId
+     * 
+     * @return MailTemplate
      */
-    public function sendOrderCancelMail($emailTemplateVariables, $senderInfo, $receiverInfo, $storeId = 0)
-    {
-        $this->template = $this->getTemplateId(self::XML_PATH_EMAIL_CUSTOMER_NOTIFICATION, $storeId);
+    public function sendOrderCancelMail(
+        $emailTemplateVariables, $senderInfo, $receiverInfo, $storeId = 0
+    ) {
+        $this->template = $this->getTemplateId(
+            self::XML_PATH_EMAIL_CUSTOMER_NOTIFICATION, 
+            $storeId
+        );
 
         $this->inlineTranslation->suspend();
-        $this->generateTemplate($emailTemplateVariables, $senderInfo, $receiverInfo, $storeId);
+        $this->generateTemplate(
+            $emailTemplateVariables, $senderInfo, $receiverInfo, $storeId
+        );
         try {
             $transport = $this->transportBuilder->getTransport();
             $transport->sendMessage();
@@ -89,8 +98,12 @@ class Email extends \Magento\Framework\App\Helper\AbstractHelper
         }
         $this->inlineTranslation->resume();
     }
+
     /**
-     * Return template id.
+     * Recived Template Id
+     * 
+     * @param string $xmlPath
+     * @param string $storeId
      *
      * @return mixed
      */
@@ -136,9 +149,12 @@ class Email extends \Magento\Framework\App\Helper\AbstractHelper
      * @param Mixed  $senderInfo
      * @param Mixed  $receiverInfo
      * @param string $storeId
+     * 
+     * @return mixed
      */
-    public function generateTemplate($emailTemplateVariables, $senderInfo, $receiverInfo, $storeId = '')
-    {
+    public function generateTemplate(
+        $emailTemplateVariables, $senderInfo, $receiverInfo, $storeId = ''
+    ) {
         if (!empty($storeId)) {
             $setStoreId = $storeId;
         } else {
@@ -167,6 +183,8 @@ class Email extends \Magento\Framework\App\Helper\AbstractHelper
 
     /**
      * Return store configuration value.
+     * 
+     * @param string $config
      * 
      * @return mixed
      */

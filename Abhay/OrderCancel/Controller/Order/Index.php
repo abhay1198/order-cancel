@@ -41,6 +41,7 @@ class Index extends \Magento\Framework\App\Action\Action
      * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
      * @param \Magento\Sales\Model\Order                 $order
      * @param \Abhay\OrderCancel\Helper\Email            $email
+     * @param \Magento\Framework\Pricing\Helper\Data     $priceHelper
      */    
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
@@ -95,10 +96,11 @@ class Index extends \Magento\Framework\App\Action\Action
     /**
      * Send Notification Email
      *
-     * @param  [string] $customerName
-     * @param  [string] $customerEmail
-     * @param  [int]    $storeId
-     * @param  [int]    $orderId
+     * @param [string] $customerName
+     * @param [string] $customerEmail
+     * @param [int]    $storeId
+     * @param [int]    $orderId
+     * 
      * @return void
      */
     public function sendEmail($customerName, $customerEmail, $storeId, $orderId)
@@ -121,7 +123,8 @@ class Index extends \Magento\Framework\App\Action\Action
         $emailTemplateVariables['store_name'] = $order->getStore()->getName();
         $emailTemplateVariables['entity_id'] = $order->getEntity_id();
         $emailTemplateVariables['created_at'] = $order->getCreated_at();
-        $emailTemplateVariables['base_grand_total'] = $this->priceHelper->currency($order->getBase_grand_total(), true, false);
+        $emailTemplateVariables['base_grand_total'] = $this->priceHelper
+            ->currency($order->getBase_grand_total(), true, false);
 
         $this->email->sendOrderCancelMail(
             $emailTemplateVariables,
