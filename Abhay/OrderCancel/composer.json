@@ -1,0 +1,17 @@
+{
+    "name": "abhay/module-ordercancel",
+    "description": "Magento2 Order Cancel from Frontend Module",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+        "proprietary"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Abhay\\OrderCancel\\": ""
+        }
+    }
+}
